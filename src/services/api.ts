@@ -1,7 +1,7 @@
 import type { Item, ItemFormData } from '../types/item';
 
-const API_BASE_URL = 'http://localhost:3001/api';
-const SERVER_BASE_URL = 'http://localhost:3001';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
+const SERVER_BASE_URL = import.meta.env.VITE_SERVER_URL || 'http://localhost:3001';
 
 export interface ApiResponse<T = any> {
   success: boolean;

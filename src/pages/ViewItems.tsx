@@ -110,12 +110,27 @@ const ViewItems: React.FC = () => {
       </div>
     );
   }
-
-  if (state.error) {
+  if (state.error && state.items.length === 0) {
     return (
       <div className="view-items-container">
+        <div className="view-items-header">
+          <h1>View Items</h1>
+          <p>Browse through our collection of items</p>
+        </div>
         <div className="error-message">
-          <p>Error: {state.error}</p>
+          <h2>🌐 Running in Demo Mode</h2>
+          <p>Backend server is not available. You're viewing demo data.</p>
+          <p>To enable full functionality, ensure the backend server is running.</p>
+        </div>
+        <div className="items-grid">
+          {state.items.map((item) => (
+            <ItemCard
+              key={item.id}
+              item={item}
+              onClick={() => handleItemClick(item)}
+              onDelete={handleDeleteItem}
+            />
+          ))}
         </div>
       </div>
     );
